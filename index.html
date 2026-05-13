@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karina Grau — Nutricionista IFBB Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8321A;
+    --red-dark: #A6280F;
+    --red-light: rgba(200,50,26,0.08);
+    --black: #0D0D0D;
+    --dark: #1A1A1A;
+    --beige: #F5EDE5;
+    --beige-mid: #EDE0D4;
+    --body: #555555;
+    --muted: #888888;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,13,13,0.96); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(200,50,26,0.15);
+    padding: 0 40px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px;
+    letter-spacing: 2px; color: var(--white);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--red);
+    color: var(--red); font-size: 13px; font-weight: 600;
+    padding: 10px 22px; border-radius: 4px; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .nav-cta:hover { background: var(--red); color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; background: var(--black);
+    display: flex; align-items: center;
+    padding: 100px 40px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(200,50,26,0.12) 0%, transparent 60%);
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block; background: var(--red); color: var(--white);
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 2px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em { color: var(--red); font-style: italic; }
+  .hero-sub {
+    font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.7;
+    margin-bottom: 40px; max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--red); color: var(--white);
+    padding: 16px 32px; border-radius: 4px; font-weight: 700;
+    font-size: 15px; text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s; letter-spacing: 0.3px;
+  }
+  .btn-primary:hover { background: var(--red-dark); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 16px 28px; border-radius: 4px; font-weight: 500;
+    font-size: 15px; text-decoration: none; transition: border-color 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 16px; align-items: flex-end;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(200,50,26,0.2);
+    border-radius: 10px; padding: 20px 24px; width: 100%;
+  }
+  .hero-card-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 8px;
+  }
+  .hero-card-val {
+    font-family: 'Playfair Display', serif; font-size: 32px;
+    font-weight: 800; color: var(--white); line-height: 1;
+  }
+  .hero-card-desc { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--red); padding: 28px 40px;
+    display: flex; justify-content: center; gap: 0;
+  }
+  .stat-item {
+    text-align: center; padding: 0 48px;
+    border-right: 1px solid rgba(255,255,255,0.25);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 34px;
+    font-weight: 800; color: var(--white); display: block;
+  }
+  .stat-lbl { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; font-weight: 500; }
+
+  /* SECTION BASE */
+  section { padding: 80px 40px; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+    display: block;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700; color: var(--dark); letter-spacing: -0.3px; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--body); line-height: 1.7; max-width: 560px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* CREDENCIALES */
+  .credenciales { background: var(--beige); }
+  .cred-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+  }
+  .cred-card {
+    background: var(--white); border-radius: 10px; padding: 32px 28px;
+    border-bottom: 3px solid var(--red);
+  }
+  .cred-icon { font-size: 28px; margin-bottom: 16px; }
+  .cred-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    font-weight: 700; color: var(--dark); margin-bottom: 10px;
+  }
+  .cred-card p { font-size: 14px; color: var(--body); line-height: 1.6; }
+
+  /* SERVICIOS */
+  .servicios { background: var(--white); }
+  .servicios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+  }
+  .servicio-card {
+    border: 1px solid rgba(200,50,26,0.12); border-radius: 10px;
+    padding: 32px 28px; transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .servicio-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--red); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .servicio-card:hover { box-shadow: 0 8px 32px rgba(200,50,26,0.1); transform: translateY(-3px); }
+  .servicio-card:hover::before { transform: scaleX(1); }
+  .serv-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--red); margin-bottom: 14px; display: block;
+  }
+  .servicio-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    font-weight: 700; color: var(--dark); margin-bottom: 10px;
+  }
+  .servicio-card p { font-size: 14px; color: var(--body); line-height: 1.6; }
+
+  /* PROCESO */
+  .proceso { background: var(--beige-mid); }
+  .proceso-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px;
+  }
+  .paso {
+    text-align: center; padding: 28px 20px;
+  }
+  .paso-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 2px solid var(--red); color: var(--red);
+    font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+  }
+  .paso h4 {
+    font-weight: 700; font-size: 15px; color: var(--dark); margin-bottom: 8px;
+  }
+  .paso p { font-size: 13px; color: var(--body); line-height: 1.6; }
+
+  /* TESTIMONIOS */
+  .testimonios { background: var(--dark); }
+  .testimonios .section-label { color: var(--red); }
+  .testimonios .section-h2 { color: var(--white); }
+  .testimonios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+  }
+  .testi-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(200,50,26,0.15);
+    border-radius: 10px; padding: 28px 24px;
+  }
+  .testi-stars { color: var(--red); font-size: 14px; margin-bottom: 14px; }
+  .testi-text {
+    font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7;
+    margin-bottom: 20px; font-style: italic;
+  }
+  .testi-author { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 600; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--black); padding: 80px 40px;
+    text-align: center; position: relative; overflow: hidden;
+    border-top: 1px solid rgba(200,50,26,0.2);
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(200,50,26,0.15) 0%, transparent 60%);
+  }
+  .cta-section * { position: relative; z-index: 1; }
+  .cta-section .section-label { justify-content: center; display: block; text-align: center; }
+  .cta-h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 46px);
+    font-weight: 800; color: var(--white); margin-bottom: 16px; letter-spacing: -0.3px;
+  }
+  .cta-sub {
+    font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 40px;
+    max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;
+  }
+  .cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: #080808; padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(200,50,26,0.1);
+  }
+  .footer-logo { font-weight: 700; font-size: 16px; color: var(--white); letter-spacing: 1px; }
+  .footer-logo span { color: var(--red); }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: grid; grid-template-columns: 1fr 1fr; }
+    .cred-grid, .servicios-grid, .testimonios-grid { grid-template-columns: 1fr; }
+    .proceso-steps { grid-template-columns: 1fr 1fr; }
+    .stats-bar { flex-wrap: wrap; gap: 24px; }
+    .stat-item { border-right: none; padding: 8px 24px; }
+    nav { padding: 0 20px; }
+    section { padding: 60px 20px; }
+    .cta-section { padding: 60px 20px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>KARINA</span>GRAU</div>
+  <a href="https://wa.me/595981191938" target="_blank" class="nav-cta">Reservar Consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-tag">IFBB Pro Figure · Nutricionista</span>
+      <h1>Tu cuerpo merece un plan <em>hecho a medida.</em></h1>
+      <p class="hero-sub">Karina Grau combina ciencia de la nutrición con la disciplina del atletismo de élite para transformar tu composición corporal con resultados reales y sostenibles.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/595981191938" target="_blank" class="btn-primary">Reservar Consulta por WhatsApp</a>
+        <a href="#servicios" class="btn-outline">Ver Servicios</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-title">Experiencia</div>
+        <div class="hero-card-val">+15 Años</div>
+        <div class="hero-card-desc">transformando composición corporal</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Reconocimiento</div>
+        <div class="hero-card-val">7x Olympia</div>
+        <div class="hero-card-desc">atleta IFBB Pro figure</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Comunidad</div>
+        <div class="hero-card-val">386K+</div>
+        <div class="hero-card-desc">seguidores en Instagram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">1ra</span>
+    <div class="stat-lbl">Ganadora Masterchef Celebrity Paraguay</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">IFBB Pro</span>
+    <div class="stat-lbl">Figure — Jueza NPC certificada</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">App Propia</span>
+    <div class="stat-lbl">Disponible en App Store y Play Store</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Team KG</span>
+    <div class="stat-lbl">Comunidad de transformación activa</div>
+  </div>
+</div>
+
+<!-- CREDENCIALES -->
+<section class="credenciales">
+  <div class="container">
+    <span class="section-label">Por qué Karina Grau</span>
+    <h2 class="section-h2">Autoridad real en nutrición y rendimiento</h2>
+    <p class="section-sub">No es solo teoría. Karina compite, entrena y practica lo que enseña.</p>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-icon">🏆</div>
+        <h3>Atleta IFBB Pro</h3>
+        <p>7 participaciones en el Mr. Olympia, la competencia más importante del mundo del fisicoculturismo y fitness. Sabe lo que es llevar un cuerpo al límite.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🎓</div>
+        <h3>Nutricionista Licenciada</h3>
+        <p>Título universitario combinado con formación continua en ciencias del deporte, composición corporal y nutrición clínica aplicada al rendimiento.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">📱</div>
+        <h3>App Karina Grau</h3>
+        <p>Plataforma digital propia con planes de alimentación, seguimiento y comunidad. Acceso al sistema desde cualquier lugar, a cualquier hora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <span class="section-label">Servicios</span>
+    <h2 class="section-h2">¿En qué te puedo ayudar?</h2>
+    <p class="section-sub">Planes personalizados para cada objetivo, desde pérdida de grasa hasta preparación para competencia.</p>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <span class="serv-num">01</span>
+        <h3>Consulta Nutricional</h3>
+        <p>Evaluación completa de composición corporal, historial alimenticio y objetivos. Plan personalizado desde la primera sesión.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="serv-num">02</span>
+        <h3>Plan de Pérdida de Grasa</h3>
+        <p>Estrategia basada en evidencia para reducir grasa corporal preservando masa muscular. Sin dietas extremas ni rebote.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="serv-num">03</span>
+        <h3>Nutrición Deportiva</h3>
+        <p>Periodización nutricional para atletas y personas activas que buscan optimizar rendimiento, recuperación y composición.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="serv-num">04</span>
+        <h3>Preparación para Competencia</h3>
+        <p>Protocolo completo de preparación para competencias de fitness y fisicoculturismo. Peak week y manejo del escenario incluido.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="serv-num">05</span>
+        <h3>Seguimiento Online</h3>
+        <p>Acompañamiento continuo a través de la App Karina Grau. Ajustes semanales según evolución y check-ins de progreso.</p>
+      </div>
+      <div class="servicio-card">
+        <span class="serv-num">06</span>
+        <h3>Consulta para Familias</h3>
+        <p>Educación nutricional para toda la familia. Hábitos saludables sostenibles que incluyen a chicos, adultos y adultos mayores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso">
+  <div class="container">
+    <span class="section-label">Cómo trabajamos</span>
+    <h2 class="section-h2">De la primera consulta a los resultados</h2>
+    <p class="section-sub">Un proceso claro y sin sorpresas, diseñado para que te mantengas en el camino.</p>
+    <div class="proceso-steps">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <h4>Evaluación Inicial</h4>
+        <p>Revisamos tu historial, objetivos y composición corporal para entender tu punto de partida.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <h4>Plan Personalizado</h4>
+        <p>Diseñamos tu plan alimenticio adaptado a tu vida real, tus horarios y tus preferencias.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <h4>Seguimiento Activo</h4>
+        <p>Check-ins semanales para ajustar el plan según tu respuesta y evolución.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <h4>Resultados Medibles</h4>
+        <p>Seguimos los números: peso, medidas, fotos de progreso. Lo que no se mide no se mejora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="container">
+    <span class="section-label">Resultados reales</span>
+    <h2 class="section-h2">Lo que dicen los pacientes</h2>
+    <div class="testimonios-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Llevo 6 meses con Karina y perdí 12kg de grasa pura, sin pasar hambre. Por primera vez en mi vida entiendo cómo comer bien."</p>
+        <div class="testi-author">María V. · Asunción</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Me preparó para mi primera competencia de fitness. La metodología es muy seria, muy profesional. Llegué a la mejor condición de mi vida."</p>
+        <div class="testi-author">Santiago R. · Atleta NPC</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Tenía hipotiroidismo y nunca podía bajar de peso. Karina entiende la parte clínica. En 4 meses vi resultados que nunca logré sola."</p>
+        <div class="testi-author">Lorena M. · Asunción</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <span class="section-label">Primer paso</span>
+  <h2 class="cta-h2">Reserva tu consulta hoy</h2>
+  <p class="cta-sub">No esperes al lunes. El mejor momento para empezar es ahora. Tu primera consulta es personalizada y sin compromiso.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/595981191938" target="_blank" class="btn-primary">Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>KARINA</span>GRAU · Nutricionista IFBB Pro</div>
+  <p>Asunción, Paraguay · 2026</p>
+</footer>
+
+</body>
+</html>
